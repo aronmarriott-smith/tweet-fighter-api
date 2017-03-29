@@ -1,0 +1,15 @@
+[Unit]
+Description=Tweet Fighter API
+After=network.target
+
+[Service]
+ExecStart=/home/forge/example.com/node/tweet-fighter-api/index.js
+Restart=always
+User=nobody
+Group=nobody
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/home/forge/example.com/node/tweet-fighter-api
+
+[Install]
+WantedBy=multi-user.target

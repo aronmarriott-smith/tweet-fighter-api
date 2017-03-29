@@ -1,0 +1,23 @@
+{
+  "name": "tweet-fighter-api",
+  "version": "0.0.1",
+  "description": "uses the twitter streaming API to retrieve tweets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "twitter",
+    "streaming",
+    "api",
+    "realtime",
+    "search"
+  ],
+  "author": "Aron Marriott-Smith <aron@atomace.com>",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "twit": "^1.1.20",
+    "request": "^2.73.0"
+  }
+}
