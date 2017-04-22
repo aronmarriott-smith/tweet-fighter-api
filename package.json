@@ -1,10 +1,11 @@
 {
   "name": "tweet-fighter-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "uses the twitter streaming API to retrieve tweets",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [
     "twitter",
@@ -17,7 +18,12 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^2.0.0",
-    "twit": "^1.1.20",
-    "request": "^2.73.0"
-  }
+    "mysql": "^2.13.0",
+    "request": "^2.73.0",
+    "sequelize": "^3.30.4",
+    "sequelize-cli": "^2.7.0",
+    "sqlite3": "^3.1.8",
+    "twit": "^1.1.20"
+  },
+  "devDependencies": {}
 }

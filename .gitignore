@@ -1,2 +1,6 @@
 .env
 /node_modules
+public
+npm-debug.log
+test.js
+database.sqlite
