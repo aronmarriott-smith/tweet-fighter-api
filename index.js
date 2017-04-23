@@ -1,31 +1,30 @@
-#!/usr/bin/env node
 require('dotenv').config({path: __dirname + '/.env'});
-var TP = require('./server/TweetParser.js');
+var app = require('express')();
+var moves = require('./server/controllers/moves');
+var matches = require('./server/controllers/matches');
+var league = require('./server/controllers/league');
+var results = require('./server/controllers/results');
 
-var Twit = require('twit');
-var request = require('request');
-var keywords = ['lazer']; // TODO replace with value from config
 
-// Streaming is in real-time so we need to poll the twitter search API
-var T = new Twit({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+app.get('/', function (req, res) {
+  res.send('hello world')
 });
 
-var stream = T.stream('statuses/filter', { track: keywords });
+app.get('/moves', moves.index);
+app.get('/moves/:id', moves.show);
+// app.get('/moves/create', moves.show);
+// app.post('/moves/store', moves.show);
 
-stream.on('tweet', processTweet);
+app.get('/matches', matches.index);
+app.get('/matches/:id', matches.show);
 
-function processTweet(tweet) {
-    if (typeof tweet !== 'object') {
-        return;
-    }
-    // console.log('@' + tweet.user.screen_name + ': ' + tweet.text + "\n " + tweet.created_at + "\n");
-	let TweetPraser = new TP;
-	let results = TweetPraser.parse(tweet.text);
+app.get('/league', league.index);
 
-	// TODO now we have some data sitck it somewhere
-    console.log(results);
-}
+app.get('/results', results.index);
+
+
+
+app.set('port', process.env.PORT || 8000);
+app.listen(app.get('port'), function () {
+  console.log("Magic happens on port", app.get('port'));
+});

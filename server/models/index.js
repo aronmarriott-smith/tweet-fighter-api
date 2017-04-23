@@ -24,7 +24,7 @@ var sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, proc
   },
 
   // SQLite only
-  storage: config.storage
+  storage: __dirname + '/' + config.storage
 });
 
 
